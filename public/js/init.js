@@ -183,3 +183,30 @@ function initEditor({ editor = null }) {
         })
     }
 }
+
+function initYtable({ selector = '.y-datatable', loadingText = 'Loading...', url = null, col = [] }) {
+
+    var columns = [];
+    if (!col.length) { alert('No columns defined'); return false; }
+    col.forEach(el => {
+        columns.push({
+            data: el,
+            name: el
+        });
+    });
+    if (url == null) {
+        alert('url is null');
+        return false;
+    }
+    var table = $(selector).DataTable({
+        processing: true,
+        serverSide: true,
+        scrollX: true,
+        pagingType: $(window).width() < 768 ? "numbers" : "simple_numbers",
+        "language": {
+            processing: loadingText
+        },
+        ajax: url,
+        columns: columns
+    });
+}

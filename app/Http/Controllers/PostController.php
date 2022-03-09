@@ -12,8 +12,8 @@ class PostController extends Controller
     public function table()
     {
         $pageConfigs = ['has_table' => true];
-
-        return view('content.posts', compact('pageConfigs'));
+        $columns = ['id', 'title', 'description', 'action'];
+        return view('content.posts', compact('pageConfigs', 'columns'));
     }
 
     public function list(Request $request)
