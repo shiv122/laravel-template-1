@@ -1,0 +1,44 @@
+/*======= Iconic Box =======*/
+.iconic-box {
+    background-color: $color-primary-7;
+    padding: 30px 40px 25px;
+    border-radius: 5px;
+
+    .icon {
+        font-size: 50px;
+        line-height: 0.5;
+        color: $color-primary;
+        margin-bottom: 20px;
+        max-width: 55px;
+
+        img,
+        i {
+            transition: all 1s ease;
+        }
+    }
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    &.icon-left {
+        display: flex;
+        align-items: flex-start;
+
+        .icon {
+            margin-bottom: 0;
+            margin-right: 20px;
+            flex: 0 0 55px;
+        }
+    }
+
+    &:hover {
+        .icon {
+            img,
+            i {
+                transform: rotateY(360deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "menu": [
+   
+    {
+      "url": "admin/",
+      "name": "Home",
+      "icon": "home",
+      "slug": "home"
+    },
+    {
+      "name": "Table Management",
+      "icon": "users",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "admin/view-post",
+          "name": "View Post",
+          "icon": "circle",
+          "slug": "view-post"
+        },
+        {
+          "url": "admin/view-student",
+          "name": "View Student",
+          "icon": "circle",
+          "slug": "view-student"
+        }
+      ]
+    }
+  ]
+}
