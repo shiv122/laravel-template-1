@@ -4,25 +4,23 @@ namespace App\View\Components\Admin;
 
 use Illuminate\View\Component;
 
-class Modal extends Component
+class Card extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $title;
-    public $type;
-    public $btn;
+    public $class;
     public $id;
-
-    public function __construct($title, $type = "primary", $btn, $id)
+    public $title;
+    public function __construct($class = "", $id = "", $title = "")
     {
-        $this->title = $title;
-        $this->type = $type;
-        $this->btn = $btn;
+        $this->class = $class;
         $this->id = $id;
+        $this->title = $title;
     }
+
 
     /**
      * Get the view / contents that represent the component.
@@ -31,6 +29,6 @@ class Modal extends Component
      */
     public function render()
     {
-        return view('components.admin.modal');
+        return view('components.admin.card');
     }
 }

@@ -1,3 +1,6 @@
+@php
+$columns = explode(',', $columns);
+@endphp
 <table
     class="table table-borderless table-hover-animation @isset($class) {{ $class }} @endisset">
     <thead>
@@ -15,7 +18,7 @@
     <tbody>
     </tbody>
 </table>
-@section('page-script')
+@push('component-script')
     <script>
         @if (!empty($columns))
             const col = JSON.parse('{!! json_encode($columns) !!}');
@@ -25,10 +28,11 @@
             initYtable({
             url: "{{ $route }}",
             col: col,
+            loadingText: "{{ $loadingText }}",
             });
             })();
         @else
             alert('No columns defined , Cant initialize table');
         @endif
     </script>
-@endsection
+@endpush

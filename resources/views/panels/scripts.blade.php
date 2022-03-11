@@ -4,6 +4,7 @@
 <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
 <script src="{{ asset(mix('vendors/js/extensions/moment.min.js')) }}"></script>
 
+
 @if (!empty($pageConfigs['has_table']))
     @if ($pageConfigs['has_table'])
         <script src="{{ asset(mix('vendors/js/tables/datatable/jquery.dataTables.min.js')) }}"></script>
@@ -53,12 +54,14 @@
         <script src="{{ asset(mix('js/scripts/forms/form-quill-editor.js')) }}"></script>
     @endif
 @endif
-
+<script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
+<script src="{{ asset(mix('vendors/js/pickers/flatpickr/flatpickr.min.js')) }}"></script>
 
 
 @if ($configData['blankPage'] === false)
-
 @endif
 {{-- page script --}}
+<script src="{{ asset(mix('js/scripts/forms/form-select2.js')) }}"></script>
 @yield('page-script')
+@stack('component-script')
 {{-- page script --}}

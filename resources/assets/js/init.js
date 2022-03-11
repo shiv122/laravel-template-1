@@ -210,3 +210,53 @@ function initYtable({ selector = '.y-datatable', loadingText = 'Loading...', url
         columns: columns
     });
 }
+function rebound({ selector = null, data = null, to = null, refresh = null, redirect = null, block = '#card', status = null, msg = null, method = "POST" }) {
+    if (to == null) { return 'Please set the target' } else if (selector == null && data == null) { return 'Please set the selector or data' }
+    blockDiv(block);
+    loadBtn('#sub-btn');
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+    });
+
+
+    if (selector !== null) {
+        var form = $(selector)[0];
+        var formData = new FormData(form);
+    }
+    if (data !== null) {
+        var formData = data;
+
+    }
+    // console.log(formData);
+    $.ajax({
+        type: method,
+        url: to,
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function (response) {
+            console.log(response);
+            unblockDiv(block);
+            initBtn('#sub-btn');
+            if (response.msg == 'success' || response.status == 'success') {
+                $(".custom-file-label").html('Choose file');
+                $(selector).trigger("reset");
+                snb('success', (response.header !== null) ? response.header : 'Added', (response.msg !== null) ? response.msg : 'Added Succesfullly');
+                (refresh == null) ? '' : setTimeout(function () { location.reload() }, refresh * 1000);
+                (redirect == null) ? '' : window.location.href = redirect;
+            } else {
+                snb('error', 'Error', 'Somthing Went Wrong');
+            }
+
+        },
+        error: function (response) {
+            unblockDiv(block);
+            initBtn('#sub-btn');
+            snb('error', 'Error', 'Somthing Went Wrong');
+            console.log(response.responseText);
+
+        },
+    });
+}

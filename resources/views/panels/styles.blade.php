@@ -21,22 +21,20 @@
 @if (!empty($pageConfigs['has_sweetAlert']))
     @if ($pageConfigs['has_sweetAlert'])
         <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
-
     @endif
 @endif
 @if (!empty($pageConfigs['has_animation']))
     @if ($pageConfigs['has_animation'])
         <link rel="stylesheet" href="{{ asset(mix('vendors/css/animate/animate.min.css')) }}">
-
     @endif
 @endif
 @if (!empty($pageConfigs['has_player']))
     @if ($pageConfigs['has_player'])
         <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/plyr.min.css')) }}">
-
     @endif
 @endif
-
+<link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
+<link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/flatpickr/flatpickr.min.css')) }}">
 
 
 {{-- Vendor Styles --}}
@@ -73,7 +71,7 @@
         <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/extensions/ext-component-media-player.css')) }}">
     @endif
 @endif
-
+<link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/pickers/form-flat-pickr.css')) }}">
 
 
 

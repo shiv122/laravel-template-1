@@ -12,8 +12,7 @@ class PostController extends Controller
     public function table()
     {
         $pageConfigs = ['has_table' => true];
-        $columns = ['id', 'title', 'description', 'action'];
-        return view('content.posts', compact('pageConfigs', 'columns'));
+        return view('content.posts', compact('pageConfigs'));
     }
 
     public function list(Request $request)
@@ -24,7 +23,7 @@ class PostController extends Controller
                 ->addIndexColumn()
                 ->editColumn('id', 'ID-{{$id}}')
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<button class="btn btn-icon btn-danger btn-sm" type="button" data-toggle="tooltip" data-original-title="Delete">Delete</button>';
+                    $actionBtn = '<button class="btn btn-icon btn-danger btn-sm delete-btn" type="button" data-toggle="tooltip" data-original-title="Delete">Delete</button>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

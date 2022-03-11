@@ -11,11 +11,17 @@ class Table extends Component
      *
      * @return void
      */
-    protected $class;
-    protected $columns;
-    public function __construct()
+    public $class;
+    public $columns;
+    public $route;
+    public $loadingText;
+
+    public function __construct($class, $columns, $route, $loadingText = "Wait...")
     {
-        //
+        $this->class = $class;
+        $this->columns = $columns;
+        $this->route = $route;
+        $this->loadingText = $loadingText;
     }
 
     /**
@@ -25,8 +31,7 @@ class Table extends Component
      */
     public function render()
     {
-        $class = $this->class;
-        $columns = $this->columns;
-        return view('components.admin.table', compact('class', 'columns'));
+
+        return view('components.admin.table');
     }
 }
